@@ -271,28 +271,23 @@ int crescente(int *vetor, int tamanho){
 	
 	
 }
-
 void leitura(int *vetor){
 	for(i=0;i<tamanho; ++i){
 		printf("Valor %dº do vetor: ", i);
 		scanf("%d", &vetor[i]);
 	}
 }
-
 void juntar(int *vetorA, int *vetorB){
 	for (i=0; i<tamanho; ++i){
 		vetorC[i] = vetorA[i] + vetorB[i];
 	}
 }
-
 int main(){
 	leitura(vetorA);
 	leitura(vetorB);
 	crescente(vetorA, tamanho);
 	crescente(vetorB, tamanho);
 	juntar(vetorA, vetorB);
-	
-	
 	printf("Vetor C: ");
 	for (i=0; i<tamanho; ++i){
 		printf("%d ", vetorC[i]);

@@ -4,10 +4,6 @@
 #include <stdlib.h>
 
 int x = 0;
-char nome[80];
-char idade[3];
-char endereco[80];
-char telefone[10];
 int contador = 0;
 int i = 0;
 
@@ -18,8 +14,6 @@ struct cad_user{
 	char telefone[10];
 };
 struct cad_user aluno[3]; 
-
-
 
 void cadastro(){
 	if (contador < 3){
@@ -46,8 +40,6 @@ void cadastro(){
 	}
 }
 
-
-
 void pesquisa_idade(){
 	char pesq_idade[3];
 	printf("Digite a idade a ser pesquisada: ");
@@ -68,13 +60,11 @@ void pesquisa_idade(){
 	}
 }
 
-
 void alteracao(){
 	char pesq_nome[80];
 	printf("Digite o nome do usuário registrado que será alterado: ");
 	fflush(stdin); 
 	fgets(pesq_nome,80,stdin);
-	
 	int acha = 0;
 	i = 0;
 	while (i<=2 && acha ==0){
@@ -90,29 +80,23 @@ void alteracao(){
 		char novo_endereco[80];
 		char novo_telefone[10];
 		
-		
 		printf("Usuário a ser alterado %s", aluno[i]);
-		
 		printf("Nome: ");
 		fflush(stdin); 
 		fgets(novo_nome, 80, stdin);
-		//aluno[i].nome = novo_nome;
 		strcpy(aluno[i].nome,novo_nome);
 		
 		printf("Idade: ");
 		fflush(stdin); 
 		fgets(nova_idade, 3, stdin);
-		//aluno[i].idade = nova_idade;
 		strcpy(aluno[i].idade,nova_idade);
 		
 		printf("Endereço: ");
 		fflush(stdin); fgets(novo_endereco, 80, stdin);
-		//aluno[i].endereco = novo_endereco;
 		strcpy(aluno[i].endereco,novo_endereco);
 		
 		printf("Telefone: ");
 		fflush(stdin); fgets(novo_telefone, 10, stdin);
-		//aluno[i].telefone = novo_telefone;
 		strcpy(aluno[i].telefone,novo_telefone);
 		
 		printf("\nRegistro alterado\n");
