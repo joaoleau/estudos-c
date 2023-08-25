@@ -115,6 +115,45 @@ int add_data(List *list, int value, int target)
     return -1;
 }
 
+void crescent(List *list)
+{
+    int maior;
+    for (int i = 0; i <= list->last; ++i)
+    {
+        for (int j = 0; j <= list->last; ++j)
+        {
+            if (list->datas[i] <= list->datas[j])
+            {
+                maior = list->datas[i];
+                list->datas[i] = list->datas[j];
+                list->datas[j] = maior;
+            }
+        }
+    }
+}
+
+void decrescent(List *list)
+{
+    int menor;
+    for (int i = 0; i <= list->last; ++i)
+    {
+        for (int j = 0; j <= list->last; ++j)
+        {
+            if (list->datas[i] >= list->datas[j])
+            {
+                menor = list->datas[i];
+                list->datas[i] = list->datas[j];
+                list->datas[j] = menor;
+            }
+        }
+    }
+}
+
+int view_last(List *list)
+{
+    return list->last;
+}
+
 int main()
 {
     List list;
@@ -134,6 +173,16 @@ int main()
     view(&list);
     add_data(&list, 13, 2);
     view(&list);
-
+    add(&list, 30);
+    add(&list, 50);
+    add(&list, 3);
+    add(&list, 10);
+    crescent(&list);
+    view(&list);
+    decrescent(&list);
+    view(&list);
+    printf("\n%d", view_last(&list));
+    add(&list, 10);
+    printf("\n%d", view_last(&list));
     return 0;
 }
