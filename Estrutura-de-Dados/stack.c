@@ -44,6 +44,7 @@ int pop(Stack *stack)
     }
     --stack->top;
     return stack->nums[stack->top + 1];
+    
 }
 
 int top(Stack *stack)

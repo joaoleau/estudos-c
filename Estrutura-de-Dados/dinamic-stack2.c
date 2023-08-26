@@ -46,6 +46,23 @@ void pop(Pilha *pilha)
     }
 }
 
+int selecionar(Pilha *pilha, int value)
+{
+    No *aux = pilha->topo;
+    while (aux)
+    {
+        if (aux->num == value)
+        {
+            return aux->num;
+        }
+        else
+        {
+            aux = aux->proximo;
+        }
+    }
+    return -1;
+}
+
 void view(Pilha *pilha)
 {
     No *aux = pilha->topo;
@@ -62,6 +79,9 @@ int main()
     iniciar(&pilha);
     push(&pilha, 3);
     push(&pilha, 13);
+    push(&pilha, 2);
     view(&pilha);
+    printf("\nValor selecionado: %d", selecionar(&pilha, 13));
+
     return 0;
 }
