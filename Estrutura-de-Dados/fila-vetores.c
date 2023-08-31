@@ -27,15 +27,16 @@ int add(Fila *fila, int value)
 {
     if (esta_cheia(fila))
     {
-        printf("Lista jÃ¡ esta cheia");
+        printf("Lista já esta cheia");
         return -1;
     }
     fila->dados[fila->ultimo % MAX_SIZE] = value;
     fila->ultimo++;
+
     return 0;
 }
 
-void remover(Fila *fila)
+int remover(Fila *fila)
 {
     if (esta_vazia(fila))
     {
@@ -43,7 +44,7 @@ void remover(Fila *fila)
         return -1;
     }
     printf("Valor a ser tirado: %d", fila->dados[fila->inicio % MAX_SIZE]);
-    fila->inicio = (fila->inicio + 1) % MAX_SIZE;
+	fila->inicio++;    
     return 0;
 }
 
@@ -52,7 +53,7 @@ void view(Fila *fila)
     printf("\n");
     for (int i = fila->inicio; i < fila->ultimo; ++i)
     {
-        printf("%d ", fila->dados[i % MAX_SIZE]);
+        printf("Posicao %d = %d\n", i - fila->inicio ,fila->dados[i % MAX_SIZE]);
     }
     return;
 }
@@ -74,9 +75,9 @@ int main()
     int i, opcao = 0;
     Fila fila;
     iniciar(&fila);
-    while (opcao != 5)
+    while (opcao != 7)
     {
-        printf("\n1 - Adicionar na Fila\n2 - Remover\n3 - Visualizar Fila\n4 - Localizar um elemento\n5 - Sair\n");
+        printf("\n1 - Adicionar na Fila\n2 - Remover\n3 - Visualizar Fila\n4 - Verificar se a fila esta vazia\n5 - Verificar se a fila esta cheia\n6 - Localizar um elemento\n7 - Sair\n");
         scanf("%d", &opcao);
 
         switch (opcao)
@@ -93,9 +94,19 @@ int main()
             view(&fila);
             break;
         case 4:
+        	if (esta_vazia(&fila)){
+        		printf("Esta vazia");
+        		break;
+			}printf("Nao esta vazia");break;
+        case 5:
+        	if (esta_cheia(&fila)){
+        		printf("Esta cheia");
+        		break;
+			}printf("Nao esta cheia");break;
+		case 6:
             printf("Digite o valor que quer procurar: ");
             scanf("%d", &i);
-            printf("Indice %d", procurar_index(&fila, i));
+            printf("Posicao %d", procurar_index(&fila, i));
             break;
         }
     }
