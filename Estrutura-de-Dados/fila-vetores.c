@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_SIZE 3
+#define MAX_SIZE 30
 
 typedef struct
 {
@@ -27,7 +27,7 @@ int add(Fila *fila, int value)
 {
     if (esta_cheia(fila))
     {
-        printf("Lista já esta cheia");
+        printf("Lista jï¿½ esta cheia");
         return -1;
     }
     fila->dados[fila->ultimo % MAX_SIZE] = value;
